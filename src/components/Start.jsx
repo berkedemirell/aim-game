@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const Start = ({ handleStart, gameInfos, handleDifficulty, handleGame }) => {
+const Start = ({ handleStart, gameInfos, handleDifficulty, handleGame, handleGameMode }) => {
   const buttons = [
     {
       title: "Short (1min)",
@@ -36,6 +36,23 @@ const Start = ({ handleStart, gameInfos, handleDifficulty, handleGame }) => {
       id: 3,
       title: "Hard",
       style: "w-6 h-6",
+    },
+  ];
+  const buttons3 = [
+    {
+      id: 1,
+      title: "Classic",
+      style: "none",
+    },
+    {
+      id: 2,
+      title: "Line",
+      style: "line",
+    },
+    {
+      id: 3,
+      title: "ZigZag",
+      style: "zigzag",
     },
   ];
 
@@ -79,6 +96,13 @@ const Start = ({ handleStart, gameInfos, handleDifficulty, handleGame }) => {
                 {d.title}
               </button>
             );
+          })}
+        </div>
+        <div className="flex flex-row items-center justify-center mt-4 gap-4">
+          {buttons3.map((d) => {
+            return(
+              <button onClick={handleGameMode} key={d.id} id={d.style} className={`bg-slate-950 pl-6 pr-6 p-1 rounded-md font-bold ${d.style === gameInfos.gameMode ? 'border border-slate-50' : ''}`}>{d.title}</button>
+            )
           })}
         </div>
         <div className="text-center mt-4">

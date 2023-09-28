@@ -13,7 +13,8 @@ function App() {
     isGameStart: false,
     isGameFinished: false,
     difficulty: '',
-    difStyle: ''
+    difStyle: '',
+    gameMode: ''
   })
 
   const accuracy = Number(counter) * 100 / (Number(mouseClick - 1))
@@ -57,13 +58,14 @@ function App() {
       isGameFinished: false,
       difficulty: gameInfos.difficulty,
       difStyle: gameInfos.difStyle, 
+      gameMode: gameInfos.gameMode, 
     })
   }
 
   const handleGame = (e) => {
     e.preventDefault();
     setMouseClick(0)
-    if(gameInfos.mode.length !== 0 && gameInfos.difficulty.length !== 0 ) {
+    if(gameInfos.mode.length !== 0 && gameInfos.difficulty.length !== 0 && gameInfos.gameMode.length !== 0 ) {
       setGameInfos({...gameInfos, isGameStart: true,}) 
     } else {
       alert('Select Game Modes')
@@ -72,7 +74,7 @@ function App() {
 
   const handlePlayAgain = (e) => {
     e.preventDefault();
-    setGameInfos({...gameInfos, isGameFinished: false, isGameStart:false, difficulty: '', difStyle: '', mode: '', duration: ''})
+    setGameInfos({...gameInfos, isGameFinished: false, isGameStart:false, difficulty: '', difStyle: '', mode: '', duration: '', gameMode: ''})
     setCounter(0)
     setMouseClick(0)
   }
@@ -82,11 +84,16 @@ function App() {
     setGameInfos({...gameInfos, difficulty: e.target.innerHTML, difStyle: e.target.id})
   }
 
+  const handleGameMode = (e) => {
+    e.preventDefault();
+    setGameInfos({...gameInfos, gameMode: e.target.id})
+  }
+
   return (
     <div className="h-screen w-screen bg-slate-300 cursor-crosshair relative">
       {!gameInfos.isGameFinished ? <div>
         {!gameInfos.isGameStart ? (
-          <Start handleGame={handleGame} handleStart={handleStart} gameInfos={gameInfos} setGameInfos={setGameInfos} setMouseClick={setMouseClick} handleDifficulty={handleDifficulty}/>
+          <Start handleGame={handleGame} handleGameMode={handleGameMode} handleStart={handleStart} gameInfos={gameInfos} setGameInfos={setGameInfos} setMouseClick={setMouseClick} handleDifficulty={handleDifficulty}/>
         ) : (
           <div>
             <ScoreBoard counter={counter} gameInfos={gameInfos} setGameInfos={setGameInfos} setCounter={setCounter}/>
