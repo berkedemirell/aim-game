@@ -13,7 +13,7 @@ const Circle = ({handleHit, gameInfos}) => {
 
   return (
     <div id="circle-div" className="flex items-center justify-center w-screen h-screen">
-        <button onClick={handleHit} id="btn" ref={circleRef} className={`${gameInfos?.difStyle} ${gameInfos.gameMode} rounded-full bg-red-900 cursor-crosshair absolute`}></button>
+        <button onClick={handleHit} id="btn" ref={circleRef} className={`${gameInfos?.difStyle} ${gameInfos.gameMode} rounded-full bg-slate-50 cursor-crosshair absolute`}></button>
     </div>
   )
 }

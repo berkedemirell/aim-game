@@ -90,7 +90,7 @@ function App() {
   }
 
   return (
-    <div className="h-screen w-screen bg-slate-300 cursor-crosshair relative">
+    <div className="h-screen w-screen bg-red-800 cursor-crosshair relative">
       {!gameInfos.isGameFinished ? <div>
         {!gameInfos.isGameStart ? (
           <Start handleGame={handleGame} handleGameMode={handleGameMode} handleStart={handleStart} gameInfos={gameInfos} setGameInfos={setGameInfos} setMouseClick={setMouseClick} handleDifficulty={handleDifficulty}/>
